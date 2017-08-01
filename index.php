@@ -17,7 +17,7 @@ include 'dbconnect.php';
             $query = mysqli_query($con,"select * from product ORDER BY pid ASC");
             if(mysqli_num_rows($query)>0){
                 while($row = mysqli_fetch_assoc($query)){ ?>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <form method="post" action="shop.php?action=add&id=<?php echo $row['pid'];?>">
                     <div style="border: 1px solid red; margin: -1px 19px 3px -1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); padding: 10px" align ="center">
                         <img src="images/<?php echo $row['image'];?>" class="img-responsive">
@@ -53,7 +53,7 @@ include 'dbconnect.php';
                         <td><?php echo $value['item_quantity'];?> </td>
                         <td><?php echo $value['product_price'];?> </td>
                         <td><?php echo number_format($value['item_quantity']*$value['product_price'],2);?> </td>
-                        <td><a href="shop.php?action=delete?id=<?php echo $row['pid'];?>"><span class="text-danger">X</span></a></td>
+                        <td><a href="shop.php?action=delete?id=<?php echo $value['product_id'];?>"><span class="text-danger">X</span></a></td>
                     </tr>
                         <?php 
                         $total = $total + ($value['item_quantity'] * $value['product_price']);
